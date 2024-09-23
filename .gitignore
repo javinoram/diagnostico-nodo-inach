@@ -8,3 +8,7 @@ wos/
 .DS_Store
 private_data.py
 __pycache__/
+personas/
+nombres.py
+nacionalidades.py
+institucion.py
