@@ -103,8 +103,10 @@ def instrumento_financiamiento( codigo ):
         final = "ANILLO"
     elif codigo in ["MI", "IM"]:
         final = "MILENIO"
-    elif codigo in ["FD", "FO"]:
+    elif codigo in ["FD"]:
         final = "FONDAP"
+    elif codigo in ["FO"]:
+        final = "FONDEF"
     elif codigo in ["CI", "PC", "AG", "PCI", "FIC"]:
         final = "CONICYT"
     elif codigo in ["CE"]:
@@ -169,6 +171,162 @@ def proyecto_concursable( string ):
         return 'no concursable'
     return 'concursable'
 
+
+##La idea es categorizar el texto del funding de los papers en una de las
+##categorias definidas
+def categorizacion_fondos_wos( string ):
+    string = limpiar_caracteres_especiales( string ).lower().strip()
+    
+    ##Categoria INACH
+    if 'inach' in string or 'eca' in 'string' or 'chilean antarctic institute' in string or 'instituto antartico chileno' in string:
+        return 'inach'
+    elif 'instituto chileno antartico' in string or 'chilean antarctic program' in string or 'instituto antarctico chileno' in string:
+        return 'inach'
+    elif 'chilean antarctic scientific program' in string or 'antarctic chilean institute' in string:
+        return 'inach'
+    
+    ##Categoria CORFO
+    elif 'corfo' in string or 'innova' in string:
+        return 'corfo'
+    
+    ##Categoria UNIVERSIDADES
+    elif 'universidad' in string or 'usach' in string or 'uach' in string or 'unab' in string or 'umag' in string:
+        return 'universidad'
+    elif 'universidad de chile' in string or 'universidad de magallanes' in string or 'utfsm' in string:
+        return 'universidad'
+    elif 'ucsc' in string or 'university of chile' in string or 'university of magellan' in string:
+        return 'universidad'
+    elif 'university of santiago' in string or 'universidad de santiago' in string or 'university of temuco' in string:
+        return 'universidad'
+    elif 'university of los lagos' in string or 'university of tarapaca' in string or 'u. chile' in string:
+        return 'universidad'
+    elif 'university of magallanes' in string or 'university of la serena' in string or 'university of concepcion' in string:
+        return 'universidad'
+    elif 'university of valparaiso' in string or 'ucsc' in string or 'pucv' in string or 'puc' in string:
+        return 'universidad'
+    elif 'la frontera university' in string or 'ufro' in string or 'univeridad de talca' in string or 'usm' in string:
+        return 'universidad'
+    elif 'university andres bello' in string:
+        return 'universidad'
+
+    ##Categoria otros
+    elif 'fondart' in string or 'copas' in string or 'conaf' in string or 'cimaa' in string or 'mineduc' in string:
+        return 'otro'
+    elif 'ministry of education of chile' in string or 'armada de chile' in string or 'chilean fisheries research' in string:
+        return 'otro'
+    elif 'chilean air force' in string or 'chilean navy' in string or 'chilean army' in string:
+        return 'otro'
+    elif 'correos de chile' in string or 'chilean government' in string or "chile's government" in string:
+        return 'otro'
+    elif 'institute of ecology and biodiversity' in string or 'cequa' in string or 'cecs' in string:
+        return 'otro'
+
+    ##Categoria ANID
+    elif 'anid' in string or 'conicyt' in string or 'fondap' in string or 'fondecyt' in string or 'millenium' in string:
+        return 'anid'
+    elif 'comision nacional de investigacion cientifica y tecnologica' in string or 'conicet' in string:
+        return 'anid'
+    elif 'agencia nacional de investigacion y desarrollo' in string or 'fonde- cyt' in string:
+        return 'anid'
+    elif 'programa bicentenario de ciencia y tecnologia' in string or 'fonde-cyt' in string:
+        return 'anid'
+    elif 'basal' in string or 'fondep' in string or 'fondequip' in string or 'ideal' in string:
+        return 'anid'
+    elif 'milenio' in string or 'millennium' in string or 'pecha' in string or 'anillo' in string:
+        return 'anid'
+    elif 'pia' in string or 'becas chile' in string or 'pai' in string or 'chilean ministry' in string:
+        return 'anid'
+    elif 'fondo nacional de desarrollo cientifico y tecnologico' in string or 'fonecyt' in string:
+        return 'anid'
+    elif 'fondef' in string or 'comision nacional de ciencia y tecnologia' in string or 'conacyt' in string:
+        return 'anid'
+    elif 'becas-chile' in string or 'becaschile' in string:
+        return 'anid'
+    elif 'consejo nacional de investigaciones cientificas y tecnologicas' in string or 'agencia nacional de promocion cientifica y tecnologica' in string:
+        return 'anid'
+    
+    ##Categoria extranjero
+    elif 'china' in string or 'uruguay' in string or 'italia' in string or 'russia' in string or 'japan' in string:
+        return 'extranjero'
+    elif 'french' in string or 'belgium' in string or 'bulgaria' in string or 'brazil' in string or 'german' in string:
+        return 'extranjero'
+    elif 'nasa' in string or 'danish' in string or 'australia' in string or 'africa' in string or 'new zealand' in string:
+        return 'extranjero'
+    elif 'spanish' in string or 'european' in string or 'chinese' in string or 'brasil' in string or 'swedish' in string:
+        return 'extranjero'
+    elif 'ecuador' in string or 'swiss' in string or 'british' in string or 'argentin' in string or 'austria' in string:
+        return 'extranjero'
+    elif 'korea' in string or 'polish' in string or 'poland' in string or 'finland' in string or 'finnish' in string:
+        return 'extranjero'
+    elif 'singapore' in string or 'malaysia' in string or 'istanbul' in string or 'ireland' in string or 'czech' in string:
+        return 'extranjero'
+    elif 'portuguese' in string or 'united kingdom' in string or 'ukrainia' in string or 'canadia' in string or 'conselho' in string:
+        return 'extranjero'
+    elif 'america' in string or 'u.s' in string or 'france' in string or 'peru' in string or 'texas' in string or 'otago' in string:
+        return 'extranjero'
+    elif 'united states' in string or 'sweden' in string or 'oxford' in string or 'portugal' in string or 'italy' in string:
+        return 'extranjero'
+    elif 'sao paulo' in string or 'geneva' in string or 'ukri' in string or 'nerc' in string or 'netherland' in string or 'london' in string:
+        return 'extranjero'
+    elif 'royal society' in string or 'costa rica' in string or 'internation' in string or 'minnesota' in string or 'harvard' in string:
+        return 'extranjero'
+    elif 'cambridge' in string or 'california' in string or 'belgian' in string or 'milan' in string or 'canada' in string:
+        return 'extranjero'
+    elif 'recherche' in string or 'venezuela' in string or 'bolivar' in string or 'buenos aires' in string or 'tokyo' in string:
+        return 'extranjero'
+    elif 'fundação' in string or 'shanghai' in string or 'sydney' in string or 'norwe' in string or 'fundacao' in string:
+        return 'extranjero'
+
+    ##No categorizados
+    else:
+        return 'noinf'
+
+
+def filtrar_normalizacion_funding_wos( lista ):
+    anid = 'no'
+    inach= 'no'
+    extranjero = 'no'
+    corfo = 'no'
+    otro = 'no'
+    uni = 'no'
+    if 'anid' in lista: anid='si'
+    if 'inach' in lista: inach='si'
+    if 'extranjero' in lista: extranjero='si'
+    if 'corfo' in lista: corfo='si'
+    if 'otro' in lista: otro='si'
+    if 'universidad' in lista: uni='si'
+    return [anid, inach, extranjero, corfo, otro, uni]
+
+##La idea es tomar las diferentes journal y agruparlas bajo una casa de publicacion
+def normalizar_casa_publicacion( string ):
+    string = string.lower().strip()
+    if 'elsevier' in string:
+        return 'elsevier'
+    elif 'wiley' in string:
+        return 'wiley'
+    elif 'nature' in string:
+        return 'nature'
+    elif 'mdpi' in string:
+        return 'mdpi'
+    elif 'springer' in string:
+        return 'springer'
+    elif 'taylor' in string and 'francis' in string:
+        return 't&f'
+    elif 'ieee' in string:
+        return 'ieee'
+    elif 'cambridge' in string and 'press' in string:
+        return 'cambridge univ press'
+    elif 'oxford' in string and 'press' in string:
+        return 'cambridge univ press'
+    elif 'frontiers' in string:
+        return 'frontiers'
+    elif 'iop' in string:
+        return 'iop'
+    elif 'univ' in string:
+        return 'universidad'
+    elif 'chile' in string:
+        return 'soc. chilena'
+    return 'otro'
 
 ##Llaves son instituciones chilenas con nombres normalizados
 region_institucion = {
