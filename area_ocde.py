@@ -1,3 +1,5 @@
+##Esta equivalencia fue hecha tomando la informacion que se encuentra en la resvista ILAIA
+
 equivalencia_objetivos = {
 'AN-01-09': ['ingenieria y tecnologia', 'astronomy and earth sciences', 'ciencias exactas y de la ingenieria'],
 'AN-02-09': ['ingenieria y tecnologia', 'astronomy and earth sciences', 'ciencias exactas y de la ingenieria'],

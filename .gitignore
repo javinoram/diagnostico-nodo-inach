@@ -1,14 +1,9 @@
 venv/
-*.xlsx
-*.xls
 procien/
 eca/
 anid/
 wos/
 .DS_Store
-private_data.py
 __pycache__/
 personas/
-nombres.py
-nacionalidades.py
-institucion.py
+private_stuff/
