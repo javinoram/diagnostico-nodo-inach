@@ -87,9 +87,9 @@ def limpiar_funciones(x):
 ##para su financiamiento
 def instrumento_financiamiento( codigo ):
     final = 'noinf'
-    if codigo in ["MT", "MG", "DT", "DG", "RG", "AMP", "RT", "AM"]:
+    if codigo in ["MT", "MG", "DT", "DG", "RG", "AMP", "RT", "AM", "PR"]:
         final = "INACH"
-    elif codigo in ["FP", "FI", "FR", "PR"]:
+    elif codigo in ["FP", "FI", "FR"]:
         final = "FONDECYT"
     elif codigo in ["FOVI", "FV"]:
         final = "FOMENTO"
@@ -134,10 +134,10 @@ def institucion_instrumento( codigo ):
         return 'UMAG'
     if sigla in ['CE']:
         return 'CECs'
-    if sigla in ["AM", "DG", "DT", "MG", "MT", "RG", "RT", "AMP"]:
+    if sigla in ["AM", "DG", "DT", "MG", "MT", "RG", "RT", "AMP", "PR"]:
         return 'INACH'
-    if sigla in ['AG', 'AN', 'CI', 'FD', 'FE', 'FI', 'FO', 'FOVI', 'FP', 'FR', 
-        'FV', 'IM', 'IN', 'INT', 'NE', 'PC', 'PR', 'MI', "PCI", "FIC"]:
+    if sigla in ['AN', 'CI', 'FD', 'FE', 'FI', 'FO', 'FOVI', 'FP', 'FR', 
+        'FV', 'IM', 'IN', 'INT', 'NE', 'PC', 'MI', "PCI", "FIC"]:
         return 'ANID'
     return 'noinf'
 
@@ -145,6 +145,8 @@ def institucion_instrumento( codigo ):
 ##de magister, doctorado, regular, internacional, externo
 def descripcion_codigo_inach( codigo ):
     sigla = codigo.split('-')[0]
+    if sigla in ['PR']:
+        return 'pregrado', 'tesis', 'terreno'
     if sigla in ['MT', 'MG']:
         if sigla == 'MG':
             return 'magister', 'tesis', 'gabinete'
@@ -339,65 +341,65 @@ region_institucion = {
     #metropolitana
     'fundacion cientifica y cultural biociencia': 'metropolitana',
     'consejo de monumentos nacionales': 'metropolitana',
-    'univ. autonoma': 'metropolitana',
-    'univ. de santiago de chile': 'metropolitana',
-    'univ. de chile': 'metropolitana',
-    'univ. del desarrollo': 'metropolitana',
-    'univ. andres bello': 'metropolitana',
-    'univ. catolica de chile': 'metropolitana',
-    'univ. mayor': 'metropolitana',
-    'univ. metropolitana': 'metropolitana',
-    'univ. santo tomas': 'metropolitana',
-    'univ. adolfo ibañez': 'metropolitana',
-    'univ. arturo prat': 'metropolitana',
-    'univ. san sebastian': 'metropolitana',
+    'u. autonoma': 'metropolitana',
+    'u. de santiago de chile': 'metropolitana',
+    'u. de chile': 'metropolitana',
+    'u. del desarrollo': 'metropolitana',
+    'u. andres bello': 'metropolitana',
+    'u. catolica de chile': 'metropolitana',
+    'u. mayor': 'metropolitana',
+    'u. metropolitana': 'metropolitana',
+    'u. santo tomas': 'metropolitana',
+    'u. adolfo ibañez': 'metropolitana',
+    'u. arturo prat': 'metropolitana',
+    'u. san sebastian': 'metropolitana',
     'inst. milenio base': 'metropolitana',
-    'univ. de las americas': 'metropolitana',
+    'u. de las americas': 'metropolitana',
     'inst. de ecologia y biodiversidad': 'metropolitana',
     'inst. de nutricion y tecnologia de los alimentos': 'metropolitana',
     'museo natural de historia natural': 'metropolitana',
     'min. de obras publicas': 'metropolitana',
     'meteochile': 'metropolitana',
-    'univ. bernardo ohiggins': 'metropolitana',
+    'u. bernardo ohiggins': 'metropolitana',
     'universidad de las americas': 'metropolitana',
     'comision chilena de energia nuclear': 'metropolitana',
     #valparaiso
-    'univ. de valparaiso': 'valparaiso',
-    'univ. catolica de valparaiso': 'valparaiso',
-    'univ. de viña del mar': 'valparaiso',
-    'univ. de playa ancha': 'valparaiso',
-    'univ. tecnica federico santa maria': 'valparaiso',
+    'u. de valparaiso': 'valparaiso',
+    'u. catolica de valparaiso': 'valparaiso',
+    'u. de viña del mar': 'valparaiso',
+    'u. de playa ancha': 'valparaiso',
+    'u. tecnica federico santa maria': 'valparaiso',
     #magallanes
-    'univ. de magallanes': 'magallanes',
+    'u. de magallanes': 'magallanes',
     'inst. antartico chileno': 'magallanes',
     'centro internacional cabo de hornos': 'magallanes',
     'fundacion cequa': 'magallanes',
     #antofagasta
-    'univ. de antofagasta': 'antofagasta',
-    'univ. catolica del norte': 'antofagasta',
+    'u. de antofagasta': 'antofagasta',
+    'u. catolica del norte': 'antofagasta',
     #atacama
-    'univ. de atacama': 'atacama',
+    'u. de atacama': 'atacama',
     #coquimbo
     'centro de estudios avanzados en zonas aridas': 'coquimbo',
     #bio bio
-    'univ. del bio bio': 'bio bio',
-    'univ. de concepcion': 'bio bio',
-    'univ. catolica de la santisima concepcion': 'bio bio',
+    'u. del bio bio': 'bio bio',
+    'u. de concepcion': 'bio bio',
+    'u. catolica de la santisima concepcion': 'bio bio',
     #maule
-    'univ. de talca': 'maule',
-    'univ. catolica del maule': 'maule',
+    'u. de talca': 'maule',
+    'u. catolica del maule': 'maule',
     #araucania
-    'univ. de la frontera': 'araucania',
-    'univ. catolica de temuco': 'araucania',
+    'u. de la frontera': 'araucania',
+    'u. catolica de temuco': 'araucania',
     #los lagos
-    'univ. de los lagos': 'los lagos',
+    'u. de los lagos': 'los lagos',
     #los rios
-    'univ. austral de chile': 'los rios',
+    'u. austral de chile': 'los rios',
     'centro de estudios cientificos de valdivia': 'los rios',
     #aysen
     'centro de investigacion en ecosistemas de la patagonia': 'aysen',
     #ohiggins
-    'univ. de ohiggins': 'ohiggins'
+    'u. de ohiggins': 'ohiggins'
 }
 
 

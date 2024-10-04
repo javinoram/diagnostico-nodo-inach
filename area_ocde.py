@@ -1066,7 +1066,7 @@ equivalencia_objetivos = {
 'RG-42-22': ['ingenieria y tecnologia', 'biotechnology', 'ciencias exactas y de la ingenieria'],
 'RT-01-22': ['ingenieria y tecnologia', 'astronomy and earth sciences', 'ciencias exactas y de la ingenieria'],
 'RT-05-22': ['ciencias natuales', 'antarctic climate change', 'ciencias naturales y de la vida'],
-'RT-17-21': ['ingenieria y tecnologia', 'biotechnology', 'ciencias exactas y de la ingenieria'],
+'RT-17-22': ['ingenieria y tecnologia', 'biotechnology', 'ciencias exactas y de la ingenieria'],
 'RT-24-22': ['ciencias natuales', 'the state of the antartic ecosystem', 'ciencias naturales y de la vida'],
 'RT-30-22': ['ciencias natuales', 'the state of the antartic ecosystem', 'ciencias naturales y de la vida'],
 'RT-32-22': ['ciencias natuales', 'the state of the antartic ecosystem', 'ciencias naturales y de la vida'],
