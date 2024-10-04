@@ -3,7 +3,8 @@ procien/
 eca/
 anid/
 wos/
+private_stuff/
+raw-data/
+copia-seguridad/
 .DS_Store
 __pycache__/
-personas/
-private_stuff/

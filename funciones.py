@@ -38,7 +38,7 @@ def limpiar_funciones(x):
         if final!="": final+="-"
         final+="COO"
 
-    if 'invest' in x.lower() or 'cientifico' in x.lower() or 'botanico' in x.lower() or 'microbiologa' in x.lower() or 'oceanografia fisica' in x.lower():
+    if 'invest' in x.lower() or 'cientifico' in x.lower() or 'botanico' in x.lower() or 'microbiologa' in x.lower() or 'oceanografia fisica' in x.lower() or 'posdoc' in x.lower():
         if final!="": final+="-"
         final+="INV"
 
@@ -54,7 +54,7 @@ def limpiar_funciones(x):
         if final!="": final+="-"
         final+="TECN"
 
-    if 'estudiante' in x.lower() or 'posdoc' in x.lower():
+    if 'estudiante' in x.lower():
         if final!="": final+="-"
         final+="EST"
         
@@ -74,14 +74,14 @@ def limpiar_funciones(x):
         if final!="": final+="-"
         final+="AST"
 
-    if final=="": return "OTRO"
+    if final=="": return "Otro"
     
-    if 'INV' in final: return 'INV'
-    elif 'COO' in final: return 'COO'
-    elif 'EST' in final: return 'EST'
-    elif 'ING' in final: return 'ING'
-    elif 'AST' in final: return 'AST'
-    else: return 'TECN'
+    if 'INV' in final: return 'Investigador'
+    elif 'COO' in final: return 'Coordinador'
+    elif 'EST' in final: return 'Estudiante'
+    elif 'ING' in final: return 'Ingeniero'
+    elif 'AST' in final: return 'Asistente'
+    else: return 'Tecnico'
 
 ##La idea que dependiendo del codigo, se determine que instrumento se uso 
 ##para su financiamiento
@@ -93,7 +93,7 @@ def instrumento_financiamiento( codigo ):
         final = "FONDECYT"
     elif codigo in ["FOVI", "FV"]:
         final = "FOMENTO"
-    elif codigo in ["INT", "IN"]:
+    elif codigo in ["INT", "IN", "AG"]:
         final = "INTER"
     elif codigo in ["FE"]:
         final = "FONDEQUIP"
@@ -107,7 +107,7 @@ def instrumento_financiamiento( codigo ):
         final = "FONDAP"
     elif codigo in ["FO"]:
         final = "FONDEF"
-    elif codigo in ["CI", "PC", "AG", "PCI", "FIC"]:
+    elif codigo in ["CI", "PC", "PCI", "FIC"]:
         final = "CONICYT"
     elif codigo in ["CE"]:
         final = "CECs"
