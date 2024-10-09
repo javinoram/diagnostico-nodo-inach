@@ -87,14 +87,18 @@ def limpiar_funciones(x):
 ##para su financiamiento
 def instrumento_financiamiento( codigo ):
     final = 'noinf'
-    if codigo in ["MT", "MG", "DT", "DG", "RG", "AMP", "RT", "AM", "PR"]:
-        final = "INACH"
+    if codigo in ["MT", "MG", "DT", "DG", "PR"]:
+        final = "TESIS"
+    elif codigo in ["RG", "RT"]:
+        final = "REGULARES"
+    elif codigo in ["AMP", "AM"]:
+        final = "AREAS MARINAS"     
     elif codigo in ["FP", "FI", "FR"]:
         final = "FONDECYT"
     elif codigo in ["FOVI", "FV"]:
         final = "FOMENTO"
     elif codigo in ["INT", "IN", "AG"]:
-        final = "INTER"
+        final = "INTERNACIONAL"
     elif codigo in ["FE"]:
         final = "FONDEQUIP"
     elif codigo in ["NE"]:
@@ -125,20 +129,22 @@ def instrumento_financiamiento( codigo ):
 def institucion_instrumento( codigo ):
     sigla = codigo.split('-')[0]
     if sigla in ['GU']:
-        return 'GLACIAR UNION'
+        return 'EXTERNO'
     if sigla in ['OA']:
-        return 'OP. ANTART'
+        return 'EXTERNO'
     if sigla in ['CO']:
-        return 'CORFO'
+        return 'EXTERNO'
     if sigla in ['MA']:
-        return 'UMAG'
+        return 'EXTERNO'
     if sigla in ['CE']:
-        return 'CECs'
+        return 'EXTERNO'
     if sigla in ["AM", "DG", "DT", "MG", "MT", "RG", "RT", "AMP", "PR"]:
         return 'INACH'
     if sigla in ['AN', 'CI', 'FD', 'FE', 'FI', 'FO', 'FOVI', 'FP', 'FR', 
-        'FV', 'IM', 'IN', 'INT', 'NE', 'PC', 'MI', "PCI", "FIC"]:
+        'FV', 'IM', 'NE', 'PC', 'MI', "PCI", "FIC"]:
         return 'ANID'
+    if sigla in ['IN', 'INT', 'AG']:
+        return 'EXTERNO'
     return 'noinf'
 
 ##La idea de esta funcion es determinar si el codigo es de un proyecto
@@ -162,14 +168,16 @@ def descripcion_codigo_inach( codigo ):
             return 'regular', 'noinf', 'gabinete'
         else:
             return 'regular', 'noinf', 'terreno'
-    elif sigla in ['INT', 'IN']:
-        return 'internacional', 'noinf', 'noinf'
+    #elif sigla in ['INT', 'IN', 'AG']:
+    #    return 'internacional', 'noinf', 'noinf' 
+    elif sigla in ['AM', 'AMP']:
+        return 'interno', 'noinf', 'noinf'
     else:
         return 'externo', 'noinf', 'noinf'
     
 ##La idea es categorizar los proyectos concursables de los que no lo son
 def proyecto_concursable( string ):
-    if string in ['AMP', 'CE', 'INT', 'IN', 'MA', 'OA']:
+    if string in ['AMP', 'CE', 'INT', 'IN', 'MA', 'OA', 'AM', 'AG']:
         return 'no concursable'
     return 'concursable'
 
